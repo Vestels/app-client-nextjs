@@ -1,0 +1,9 @@
+@use "@/styles/helper/functions" as *;
+
+:root {
+  --global-transition-time-and-function: 0.25s ease;
+
+  --app-header-height: #{toRem(72px)};
+  --app-main-max-width: #{toRem(1440px)};
+  --app-content-max-width: #{toRem(800px)};
+}

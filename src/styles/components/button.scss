@@ -1,0 +1,81 @@
+@use "@/styles/forwarder" as *;
+
+.btn {
+  display: grid;
+  place-items: center;
+  gap: toRem(8px);
+  color: var(--pure-white);
+  font-size: toRem(16px);
+  font-weight: 600;
+  background-color: var(--color-00);
+  width: 100%;
+  padding: toRem(8px) toRem(24px);
+  margin: 0;
+  border-radius: toRem(32px);
+  border-style: solid;
+  border-width: toRem(2px);
+  border-color: transparent;
+  outline-offset: toRem(2px);
+  outline-width: toRem(2px);
+  outline-color: transparent;
+  outline-style: solid;
+  transition: var(--global-transition-time-and-function);
+  transition-property: color, background-color, outline-color, transform;
+  hyphens: manual;
+  cursor: pointer;
+
+  @include media-breakpoint-up(sm) {
+    width: auto;
+  }
+
+  &:not(.btn--logout):not(.btn--delete-account) {
+    @media (hover: hover) {
+      &:hover {
+        transform: translateY(calc(#{toRem(2px)} * -1));
+      }
+    }
+
+    &:active {
+      transform: translateY(calc(#{toRem(1px)} * -1));
+    }
+  }
+
+  &:focus-visible {
+    outline-color: var(--color-15);
+  }
+
+  &--logout {
+    width: auto;
+    padding: toRem(8px);
+    background-color: var(--color-15);
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-00);
+      }
+    }
+
+    &:active {
+      transform: scale(0.96);
+    }
+
+    .svg {
+      color: var(--pure-white);
+      width: toRem(28px);
+    }
+  }
+
+  &--retry {
+    color: var(--color-00);
+    background-color: var(--pure-white);
+  }
+
+  &--restore-account {
+    background-color: var(--color-12);
+  }
+
+  &--delete-account {
+    color: var(--pure-white);
+    background-color: var(--red-04);
+  }
+}

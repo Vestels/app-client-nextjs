@@ -1,0 +1,8 @@
+@use "@/styles/forwarder" as *;
+@use "@/styles/helper/animations" as *;
+
+.spinner {
+  place-self: center;
+  width: toRem(35px);
+  animation: spin 0.8s linear infinite;
+}

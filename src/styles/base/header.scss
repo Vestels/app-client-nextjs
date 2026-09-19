@@ -1,0 +1,30 @@
+@use "@/styles/forwarder" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: var(--app-header-height);
+  display: grid;
+  place-items: center;
+  background-color: var(--pure-white);
+  box-shadow: var(--shadow-02);
+  border-color: var(--color-11);
+  border-width: 0 0 toRem(1px) 0;
+  border-style: solid;
+  z-index: 2;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: toRem(24px);
+    width: min(100%, var(--app-main-max-width));
+    padding-inline: toRem(16px);
+  }
+
+  &__logo {
+    hyphens: auto;
+  }
+}
