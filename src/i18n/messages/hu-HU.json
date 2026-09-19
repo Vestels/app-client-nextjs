@@ -13,7 +13,8 @@
         "CANCEL": "Elvetés"
       },
       "ERROR": {
-        "RETRY": "Újrapróbálom"
+        "RETRY": "Újrapróbálom",
+        "BACK_TO_HOME": "Főoldalra"
       }
     },
     "REQUIREMENTS": {
@@ -87,8 +88,9 @@
         "PASSWORD": "Jelszó"
       }
     },
-    "ERROR": {
-      "LABEL": "404"
+    "STATUS": {
+      "ERROR": "Hoppá. Valami hiba történt. Próbáld újra.",
+      "NOT_FOUND": "Légüres térbe kerültél."
     }
   }
 }
