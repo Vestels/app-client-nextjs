@@ -1,11 +1,21 @@
 import { auth0 } from "@/lib/auth0.lib";
-import { NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
+import { NextRequest, NextResponse } from "next/server";
+import { routing } from "@/i18n/routing";
 
-export async function proxy(request: Request) {
+const handleI18nRouting = createMiddleware(routing);
+
+export async function proxy(request: NextRequest) {
   const url = new URL(request.url);
 
   if (url.pathname.startsWith("/auth")) {
     return auth0.middleware(request);
+  }
+
+  const i18nResponse = handleI18nRouting(request);
+
+  if (i18nResponse.status >= 300 && i18nResponse.status < 400) {
+    return i18nResponse;
   }
 
   const session = await auth0.getSession();

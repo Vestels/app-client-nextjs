@@ -1,31 +1,29 @@
 export enum UserStatus {
-  ACTIVE = "Aktív",
-  SUSPENDED = "Felfüggesztett",
-  DEACTIVATED = "Deaktivált",
-  PENDING_DELETION = "Törlésre vár",
+  ACTIVE = "ACTIVE",
+  SUSPENDED = "SUSPENDED",
+  PENDING_DELETION = "PENDING_DELETION",
 }
 
 export enum Gender {
-  MALE = "Férfi",
-  FEMALE = "Nő",
+  MALE = "MALE",
+  FEMALE = "FEMALE",
 }
 
 export enum UnitSystem {
-  METRIC = "Metrikus - (kg, cm)",
-  IMPERIAL = "Angolszász - (lb, ft/in)",
+  METRIC = "METRIC",
+  IMPERIAL = "IMPERIAL",
 }
 
 export enum Language {
-  HU = "Magyar",
-  EN = "Angol",
+  HU = "HU",
+  EN = "EN",
 }
 
 export enum Theme {
-  LIGHT = "Világos",
-  DARK = "Sötét",
+  LIGHT = "LIGHT",
+  DARK = "DARK",
 }
 
 export enum IdentityProvider {
-  PASSWORD = "Jelszó",
-  // GOOGLE,
+  PASSWORD = "PASSWORD",
 }

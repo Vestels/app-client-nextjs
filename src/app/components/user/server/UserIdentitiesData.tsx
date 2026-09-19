@@ -4,8 +4,10 @@ import { apiClient } from "@/lib/api-client.lib";
 import ErrorStatus from "../../status/ErrorStatus";
 import { USERS } from "@/app/constants/routes";
 import React from "react";
+import { getTranslations } from "next-intl/server";
 
 export default async function UserIdentitiesData() {
+  const translate = await getTranslations("APP");
   let userIdentities: UserIdentity[];
 
   try {
@@ -15,10 +17,6 @@ export default async function UserIdentitiesData() {
     return <ErrorStatus />;
   }
 
-  const provider: Record<string, IdentityProvider> = {
-    PASSWORD: IdentityProvider.PASSWORD,
-  };
-
   return (
     <>
       <div className="user-informations user-informations--identity">
@@ -26,12 +24,12 @@ export default async function UserIdentitiesData() {
           <React.Fragment>
             {userIdentities.map((identity) => (
               <React.Fragment key={identity.provider}>
-                <p>{provider[identity.provider]}</p>
+                <p>{translate(`ENUMS.IDENTITY_PROVIDER.${identity.provider}`)}</p>
 
                 <hr className="divider" />
 
                 <div className="user-informations__data-row">
-                  <strong className="property">Létrehozva:</strong>
+                  <strong className="property">{translate("PROFILE.IDENTITIES.CREATED_AT")}</strong>
                   {identity.createdAt ? (
                     <p className="value">{new Date(identity.createdAt).toLocaleDateString()}</p>
                   ) : (
@@ -40,7 +38,7 @@ export default async function UserIdentitiesData() {
                 </div>
 
                 <div className="user-informations__data-row">
-                  <strong className="property">Utolsó használat:</strong>
+                  <strong className="property">{translate("PROFILE.IDENTITIES.LAST_USED_AT")}</strong>
                   {identity.lastUsedAt ? (
                     <p className="value">{new Date(identity.lastUsedAt).toLocaleDateString()}</p>
                   ) : (

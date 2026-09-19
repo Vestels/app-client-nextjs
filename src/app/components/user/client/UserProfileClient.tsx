@@ -4,11 +4,14 @@ import UserProfileData from "../server/UserProfileData";
 import SpinnerSvg from "../../svgs/SpinnerSvg";
 import UserIdentitiesData from "../server/UserIdentitiesData";
 import UserPreferencesData from "../server/UserPreferencesData";
+import { getTranslations } from "next-intl/server";
 
 export default async function UserProfileClient() {
+  const translate = await getTranslations("APP.PROFILE");
+
   return (
     <>
-      <h1>Profil</h1>
+      <h1>{translate("TITLE")}</h1>
       <hr className="divider" />
 
       <div className="user-data-table">
@@ -18,7 +21,7 @@ export default async function UserProfileClient() {
       </div>
 
       <hr className="divider" />
-      <h2 className="section-title">Személyes</h2>
+      <h2 className="section-title">{translate("PERSONAL.TITLE")}</h2>
       <hr className="divider" />
 
       <div className="user-data-table">
@@ -28,7 +31,7 @@ export default async function UserProfileClient() {
       </div>
 
       <hr className="divider" />
-      <h2 className="section-title">Preferenciák</h2>
+      <h2 className="section-title">{translate("PREFERENCES.TITLE")}</h2>
       <hr className="divider" />
 
       <div className="user-data-table">
@@ -38,7 +41,7 @@ export default async function UserProfileClient() {
       </div>
 
       <hr className="divider" />
-      <h2 className="section-title">Bejelentkezési módok</h2>
+      <h2 className="section-title">{translate("IDENTITIES.TITLE")}</h2>
       <hr className="divider" />
 
       <div className="user-data-table user-data-table--identities">

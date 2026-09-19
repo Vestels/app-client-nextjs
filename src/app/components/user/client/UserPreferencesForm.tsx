@@ -6,15 +6,17 @@ import { handleUpdateField } from "@/lib/handle-update-field.lib";
 import { Language, Theme, UnitSystem } from "@/enums/user.enum";
 import { useUnsavedChanges } from "@/contexts/UnsavedChangesContext";
 import { getChangedFields } from "@/lib/get-changed-fields.lib";
+import { useTranslations } from "next-intl";
 
 export default function UserPreferencesForm({ initialPreferences }: { initialPreferences: UserPreference }) {
+  const translate = useTranslations("APP");
   const [formData, setFormData] = useState<UserPreference>(initialPreferences);
   const { registerForm, unregisterForm, markChanged, markSaved } = useUnsavedChanges();
   const formDataRef = useRef(formData);
 
   useEffect(() => {
     formDataRef.current = formData;
-    
+
     const changed = JSON.stringify(formData) !== JSON.stringify(initialPreferences);
 
     if (changed) {
@@ -49,7 +51,7 @@ export default function UserPreferencesForm({ initialPreferences }: { initialPre
     <div className="user-informations">
       <div className="user-informations__data-row">
         <label htmlFor="language" className="property">
-          Nyelv:
+          {translate("PROFILE.PREFERENCES.LANGUAGE")}
         </label>
 
         <select
@@ -57,9 +59,9 @@ export default function UserPreferencesForm({ initialPreferences }: { initialPre
           id="language"
           value={formData.language}
           onChange={(event) => handleUpdateField(setFormData, "language", event.target.value as Language)}>
-          {Object.entries(Language).map(([key, value]) => (
-            <option key={key} value={key}>
-              {value}
+          {Object.values(Language).map((language) => (
+            <option key={language} value={language}>
+              {translate(`ENUMS.LANGUAGE.${language}`)}
             </option>
           ))}
         </select>
@@ -67,16 +69,16 @@ export default function UserPreferencesForm({ initialPreferences }: { initialPre
 
       <div className="user-informations__data-row">
         <label htmlFor="unitSystem" className="property">
-          Mértékegység-rendszer:
+          {translate("PROFILE.PREFERENCES.UNIT_SYSTEM")}
         </label>
 
         <select
           id="unitSystem"
           value={formData.unitSystem}
           onChange={(event) => handleUpdateField(setFormData, "unitSystem", event.target.value as UnitSystem)}>
-          {Object.entries(UnitSystem).map(([key, value]) => (
-            <option key={key} value={key}>
-              {value}
+          {Object.values(UnitSystem).map((unitSystem) => (
+            <option key={unitSystem} value={unitSystem}>
+              {translate(`ENUMS.UNIT_SYSTEM.${unitSystem}`)}
             </option>
           ))}
         </select>
@@ -84,7 +86,7 @@ export default function UserPreferencesForm({ initialPreferences }: { initialPre
 
       <div className="user-informations__data-row">
         <label htmlFor="theme" className="property">
-          Téma:
+          {translate("PROFILE.PREFERENCES.THEME")}
         </label>
 
         <select
@@ -92,9 +94,9 @@ export default function UserPreferencesForm({ initialPreferences }: { initialPre
           id="theme"
           value={formData.theme}
           onChange={(event) => handleUpdateField(setFormData, "theme", event.target.value as Theme)}>
-          {Object.entries(Theme).map(([key, value]) => (
-            <option key={key} value={key}>
-              {value}
+          {Object.values(Theme).map((theme) => (
+            <option key={theme} value={theme}>
+              {translate(`ENUMS.THEME.${theme}`)}
             </option>
           ))}
         </select>
@@ -102,7 +104,7 @@ export default function UserPreferencesForm({ initialPreferences }: { initialPre
 
       <div className="user-informations__data-row user-informations__data-row--one-liner">
         <label htmlFor="emailNotifications" className="property">
-          Email értesítések:
+          {translate("PROFILE.PREFERENCES.EMAIL_NOTIFICATIONS")}
         </label>
 
         <label className="switch">
@@ -118,7 +120,7 @@ export default function UserPreferencesForm({ initialPreferences }: { initialPre
 
       <div className="user-informations__data-row user-informations__data-row--one-liner">
         <label htmlFor="pushNotifications" className="property">
-          Push étesítések:
+          {translate("PROFILE.PREFERENCES.PUSH_NOTIFICATIONS")}
         </label>
 
         <label className="switch">

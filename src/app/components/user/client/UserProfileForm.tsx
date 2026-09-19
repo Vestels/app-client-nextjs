@@ -6,8 +6,10 @@ import { handleUpdateField } from "@/lib/handle-update-field.lib";
 import { Gender } from "@/enums/user.enum";
 import { useUnsavedChanges } from "@/contexts/UnsavedChangesContext";
 import { getChangedFields } from "@/lib/get-changed-fields.lib";
+import { useTranslations } from "next-intl";
 
 export default function UserProfileForm({ initialPreferences }: { initialPreferences: UserProfile }) {
+  const translate = useTranslations("APP");
   const [formData, setFormData] = useState<UserProfile>(initialPreferences);
   const { registerForm, unregisterForm, markChanged, markSaved } = useUnsavedChanges();
   const formDataRef = useRef(formData);
@@ -49,8 +51,8 @@ export default function UserProfileForm({ initialPreferences }: { initialPrefere
     <div className="user-informations">
       <div className="user-informations__data-row">
         <label htmlFor="birthDate" className="property property--required">
-          Születési idő:
-          <span className="input-requirement">{"(Kötelező)"}</span>
+          {translate("PROFILE.PERSONAL.BIRTH_DATE")}
+          <span className="input-requirement">{`(${translate("REQUIREMENTS.REQUIRED")})`}</span>
         </label>
 
         <input
@@ -65,8 +67,8 @@ export default function UserProfileForm({ initialPreferences }: { initialPrefere
 
       <div className="user-informations__data-row">
         <label htmlFor="gender" className="property property--required">
-          Nem:
-          <span className="input-requirement">{"(Kötelező)"}</span>
+          {translate("PROFILE.PERSONAL.GENDER.LABEL")}
+          <span className="input-requirement">{`(${translate("REQUIREMENTS.REQUIRED")})`}</span>
         </label>
 
         <select
@@ -74,13 +76,13 @@ export default function UserProfileForm({ initialPreferences }: { initialPrefere
           className="value"
           value={formData.gender ?? ""}
           onChange={(event) => handleUpdateField(setFormData, "gender", event.target.value as Gender)}>
-          <option value="" disabled>
-            Válassz
+          <option className="placeholder" value="" disabled>
+            {translate("PROFILE.PERSONAL.GENDER.PLACEHOLDER")}
           </option>
 
-          {Object.entries(Gender).map(([key, value]) => (
-            <option key={key} value={key}>
-              {value}
+          {Object.values(Gender).map((gender) => (
+            <option key={gender} value={gender}>
+              {translate(`ENUMS.GENDER.${gender}`)}
             </option>
           ))}
         </select>
@@ -88,7 +90,7 @@ export default function UserProfileForm({ initialPreferences }: { initialPrefere
 
       <div className="user-informations__data-row">
         <label htmlFor="nickname" className="property">
-          Becenév:
+          {translate("PROFILE.PERSONAL.NICKNAME")}
         </label>
 
         <input
@@ -102,7 +104,7 @@ export default function UserProfileForm({ initialPreferences }: { initialPrefere
 
       <div className="user-informations__data-row">
         <label htmlFor="firstName" className="property">
-          Keresztnév:
+          {translate("PROFILE.PERSONAL.FIRSTNAME")}
         </label>
 
         <input
@@ -116,7 +118,7 @@ export default function UserProfileForm({ initialPreferences }: { initialPrefere
 
       <div className="user-informations__data-row">
         <label htmlFor="lastName" className="property">
-          Vezetéknév:
+          {translate("PROFILE.PERSONAL.LASTNAME")}
         </label>
 
         <input

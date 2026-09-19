@@ -5,8 +5,11 @@ import ErrorStatus from "../../status/ErrorStatus";
 import CheckSvg from "../../svgs/CheckSvg";
 import CloseSvg from "../../svgs/CloseSvg";
 import NoDataSvg from "../../svgs/NoDataSvg";
+import { getTranslations } from "next-intl/server";
 
 export default async function UserInfoData() {
+  const translate = await getTranslations("APP.PROFILE.ME");
+
   let userInfo: UserAuth0Info;
 
   try {
@@ -20,7 +23,7 @@ export default async function UserInfoData() {
     <>
       {userInfo && (
         <div className="user-informations__data-row">
-          <strong className="property">Email megerősítve:</strong>
+          <strong className="property">{translate("EMAIL_VERIFIED")}</strong>
           {userInfo.emailVerified != null ? (
             <p className={`value status ${userInfo.emailVerified ? "status--verified" : "status--not-verified"}`}>
               {userInfo.emailVerified ? <CheckSvg /> : <CloseSvg />}
