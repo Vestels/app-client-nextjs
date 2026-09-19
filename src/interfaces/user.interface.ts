@@ -1,7 +1,6 @@
 import { Gender, Theme, UnitSystem, UserStatus } from "@/enums/user.enum";
 
 export interface User {
-  publicId: string;
   email: string;
   userStatus: UserStatus;
   createdAt: string;
@@ -18,7 +17,6 @@ export interface UserAuth0Info {
 }
 
 export interface UserProfile {
-  userId: string;
   birthDate: string;
   nickname: string;
   firstName: string;
@@ -27,7 +25,6 @@ export interface UserProfile {
 }
 
 export interface UserPreference {
-  userId: string;
   language: string;
   unitSystem: UnitSystem;
   theme: Theme;
@@ -37,9 +34,7 @@ export interface UserPreference {
 }
 
 export interface UserIdentity {
-  userId: string;
   provider: string;
-  subject: string;
   createdAt: string;
   lastUsedAt: string;
 }

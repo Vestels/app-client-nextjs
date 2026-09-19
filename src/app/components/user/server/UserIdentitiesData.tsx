@@ -25,7 +25,7 @@ export default async function UserIdentitiesData() {
         {userIdentities && userIdentities.length > 0 && (
           <React.Fragment>
             {userIdentities.map((identity) => (
-              <React.Fragment key={identity.subject}>
+              <React.Fragment key={identity.provider}>
                 <p>{provider[identity.provider]}</p>
 
                 <hr className="divider" />
