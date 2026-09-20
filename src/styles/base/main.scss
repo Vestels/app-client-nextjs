@@ -1,12 +1,15 @@
 @use "@/styles/forwarder" as *;
 
 .main {
-  height: 100%;
   display: grid;
-  place-items: start center;
+  align-items: start;
   gap: toRem(36px);
   padding: calc(toRem(32px) + var(--app-header-height)) toRem(16px);
   width: min(100%, var(--app-main-max-width));
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: 0.3fr 1fr 0.3fr;
+  }
 
   &-container {
     position: relative;

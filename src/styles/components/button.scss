@@ -43,4 +43,9 @@
   &:focus-visible {
     outline-color: var(--color-15);
   }
+
+  &--tertiary {
+    color: var(--color-00);
+    background-color: transparent;
+  }
 }

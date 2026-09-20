@@ -1,12 +1,10 @@
 import "@/styles/styles.scss";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { Metadata } from "next";
 import { routing } from "@/i18n/routing";
-import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { getCurrentUser } from "@/lib/get-current-user.lib";
-import { NextIntlClientProvider } from "next-intl";
-import { AUTH_ROUTES } from "@/app/constants/routes";
-import LogoutSvg from "@/app/components/svgs/LogoutSvg";
-import Button from "@/app/components/Button";
+import SideNavigation from "@/app/components/SideNavigation";
 
 export const metadata: Metadata = {
   title: "Fitness App",
@@ -37,12 +35,10 @@ export default async function RootLayout({
             <div className="header__logo">
               <h1>{translate("APP_NAME")}</h1>
             </div>
-            <Button href={`/${AUTH_ROUTES.LOGOUT}`}>
-              <LogoutSvg />
-            </Button>
           </div>
         </header>
         <main className="main">
+          <SideNavigation />
           <article className="main-container">
             <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
           </article>

@@ -55,11 +55,8 @@
         }
       }
 
-      &.btn {
-        &--delete-account,
-        &--restore-account {
-          justify-self: start;
-        }
+      &.button {
+        justify-self: start;
       }
     }
   }

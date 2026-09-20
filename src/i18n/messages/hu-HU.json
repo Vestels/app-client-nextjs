@@ -4,9 +4,13 @@
     "MAIN_PAGE": {
       "TITLE": "Főoldal"
     },
+    "ROUTES": {
+      "HOME": "Főoldal",
+      "PROFILE": "Profil"
+    },
     "ACTIONS": {
+      "LOGOUT": "Kijelentkezés",
       "PROFILE": {
-        "LABEL": "Profil",
         "RESTORE": "Fiók helyreállítása",
         "DELETE": "Törlés",
         "SAVE": "Mentés",

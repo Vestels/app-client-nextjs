@@ -1,0 +1,9 @@
+@use "@/styles/forwarder" as *;
+
+.side-navigation {
+  position: sticky;
+  top: calc(var(--app-header-height) + #{toRem(40px)});
+
+  &__nav {
+  }
+}
