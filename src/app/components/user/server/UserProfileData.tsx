@@ -1,8 +1,8 @@
 import { ROUTES, USERS } from "@/app/constants/routes";
 import { UserProfile } from "@/interfaces/user.interface";
 import { apiClient } from "@/lib/api-client.lib";
-import ErrorStatus from "../../status/ErrorStatus";
-import UserProfileForm from "../client/UserProfileForm";
+import ErrorStatus from "@/app/components/status/ErrorStatus";
+import UserProfileForm from "@/app/components/user/client/UserProfileForm";
 
 export default async function UserProfileData() {
   let UserProfile: UserProfile;

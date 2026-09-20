@@ -1,10 +1,11 @@
-import { ROUTES, USERS } from "../../../constants/routes";
-import ErrorStatus from "../../status/ErrorStatus";
+import { getTranslations } from "next-intl/server";
+import { ROUTES, USERS } from "@/app/constants/routes";
 import { apiClient } from "@/lib/api-client.lib";
-import UserInfoData from "./UserInfoData";
 import { User } from "@/interfaces/user.interface";
 import { formatDate } from "@/lib/format-date.lib";
-import { getTranslations } from "next-intl/server";
+import ErrorStatus from "@/app/components/status/ErrorStatus";
+import UserInfoData from "@/app/components/user/server/UserInfoData";
+import Button from "@/app/components/Button";
 
 export default async function UserData() {
   const translate = await getTranslations("APP");
@@ -68,16 +69,16 @@ export default async function UserData() {
                 </div>
 
                 <div className="user-informations__data-row">
-                  <button className="btn btn--restore-account value" type="button">
+                  <Button className="value" variant={"secondary"}>
                     {translate("ACTIONS.PROFILE.RESTORE")}
-                  </button>
+                  </Button>
                 </div>
               </>
             ) : (
               <div className="user-informations__data-row">
-                <button className="btn btn--delete-account value" type="button">
+                <Button className="value" variant={"secondary"}>
                   {translate("ACTIONS.PROFILE.DELETE")}
-                </button>
+                </Button>
               </div>
             )}
           </>

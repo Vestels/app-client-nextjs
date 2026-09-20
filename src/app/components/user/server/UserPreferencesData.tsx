@@ -1,8 +1,8 @@
 import { UserPreference } from "@/interfaces/user.interface";
-import ErrorStatus from "../../status/ErrorStatus";
 import { apiClient } from "@/lib/api-client.lib";
 import { ROUTES, USERS } from "@/app/constants/routes";
-import UserPreferencesForm from "../client/UserPreferencesForm";
+import UserPreferencesForm from "@/app/components/user/client/UserPreferencesForm";
+import ErrorStatus from "@/app/components/status/ErrorStatus";
 
 export default async function UserPreferencesData() {
   let userPreferences: UserPreference;

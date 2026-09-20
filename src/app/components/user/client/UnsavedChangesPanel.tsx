@@ -2,6 +2,7 @@
 
 import { useUnsavedChanges } from "@/contexts/UnsavedChangesContext";
 import { useTranslations } from "next-intl";
+import Button from "@/app/components/Button";
 
 export default function UnsavedChangesPanel() {
   const translate = useTranslations("APP");
@@ -16,13 +17,11 @@ export default function UnsavedChangesPanel() {
       <p className="unsaved-changes-panel__status-label">{translate("PROFILE.UNSAVED_CHANGES_PANEL.LABEL")}</p>
 
       <div className="unsaved-changes-panel__actions">
-        <button className="btn" type="button" onClick={discardChanges}>
+        <Button variant={"secondary"} onClick={discardChanges}>
           {translate("ACTIONS.PROFILE.CANCEL")}
-        </button>
+        </Button>
 
-        <button className="btn" type="button" onClick={saveChanges}>
-          {translate("ACTIONS.PROFILE.SAVE")}
-        </button>
+        <Button onClick={saveChanges}>{translate("ACTIONS.PROFILE.SAVE")}</Button>
       </div>
     </>
   );

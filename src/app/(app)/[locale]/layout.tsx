@@ -1,11 +1,12 @@
-import { Metadata } from "next";
-import LogoutSvg from "../../components/svgs/LogoutSvg";
 import "@/styles/styles.scss";
+import { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { getCurrentUser } from "@/lib/get-current-user.lib";
 import { NextIntlClientProvider } from "next-intl";
 import { AUTH_ROUTES } from "@/app/constants/routes";
+import LogoutSvg from "@/app/components/svgs/LogoutSvg";
+import Button from "@/app/components/Button";
 
 export const metadata: Metadata = {
   title: "Fitness App",
@@ -36,9 +37,9 @@ export default async function RootLayout({
             <div className="header__logo">
               <h1>{translate("APP_NAME")}</h1>
             </div>
-            <a href={`/${AUTH_ROUTES.LOGOUT}`} className="btn btn--logout">
+            <Button href={`/${AUTH_ROUTES.LOGOUT}`}>
               <LogoutSvg />
-            </a>
+            </Button>
           </div>
         </header>
         <main className="main">

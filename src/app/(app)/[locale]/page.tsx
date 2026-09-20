@@ -1,6 +1,6 @@
 import { ROUTES } from "@/app/constants/routes";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
+import Button from "@/app/components/Button";
 
 export default async function Home() {
   const translate = await getTranslations("APP");
@@ -10,9 +10,7 @@ export default async function Home() {
       <h1>{translate("MAIN_PAGE.TITLE")}</h1>
       <hr className="divider" />
 
-      <Link href={`/${ROUTES.PROFILE}`} className="btn">
-        {translate("ACTIONS.PROFILE.LABEL")}
-      </Link>
+      <Button href={`/${ROUTES.PROFILE}`}>{translate("ACTIONS.PROFILE.LABEL")}</Button>
     </>
   );
 }

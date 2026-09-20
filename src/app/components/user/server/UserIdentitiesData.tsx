@@ -1,10 +1,9 @@
-import { IdentityProvider } from "@/enums/user.enum";
 import { UserIdentity } from "@/interfaces/user.interface";
 import { apiClient } from "@/lib/api-client.lib";
-import ErrorStatus from "../../status/ErrorStatus";
 import { ROUTES, USERS } from "@/app/constants/routes";
-import React from "react";
 import { getTranslations } from "next-intl/server";
+import ErrorStatus from "@/app/components/status/ErrorStatus";
+import React from "react";
 
 export default async function UserIdentitiesData() {
   const translate = await getTranslations("APP");

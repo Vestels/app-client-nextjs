@@ -1,7 +1,7 @@
 "use client";
 
-import UnsavedChangesPanel from "./UnsavedChangesPanel";
 import { useUnsavedChanges } from "@/contexts/UnsavedChangesContext";
+import UnsavedChangesPanel from "@/app/components/user/client/UnsavedChangesPanel";
 
 export default function UnsavedChangesPanelWrapper() {
   const { hasUnsavedChanges } = useUnsavedChanges();

@@ -1,6 +1,6 @@
 @use "@/styles/forwarder" as *;
 
-.btn {
+.button {
   display: grid;
   place-items: center;
   gap: toRem(8px);
@@ -28,7 +28,7 @@
     width: auto;
   }
 
-  &:not(.btn--logout):not(.btn--delete-account) {
+  &:not(.button--disabled) {
     @media (hover: hover) {
       &:hover {
         transform: translateY(calc(#{toRem(2px)} * -1));
@@ -42,40 +42,5 @@
 
   &:focus-visible {
     outline-color: var(--color-15);
-  }
-
-  &--logout {
-    width: auto;
-    padding: toRem(8px);
-    background-color: var(--color-15);
-
-    @media (hover: hover) {
-      &:hover {
-        background-color: var(--color-00);
-      }
-    }
-
-    &:active {
-      transform: scale(0.96);
-    }
-
-    .svg {
-      color: var(--pure-white);
-      width: toRem(28px);
-    }
-  }
-
-  &--retry {
-    color: var(--color-00);
-    background-color: var(--pure-white);
-  }
-
-  &--restore-account {
-    background-color: var(--color-12);
-  }
-
-  &--delete-account {
-    color: var(--pure-white);
-    background-color: var(--red-04);
   }
 }

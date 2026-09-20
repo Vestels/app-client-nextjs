@@ -1,11 +1,11 @@
+import { getTranslations } from "next-intl/server";
 import { ROUTES, USERS } from "@/app/constants/routes";
 import { apiClient } from "@/lib/api-client.lib";
 import { UserAuth0Info } from "@/interfaces/user.interface";
-import ErrorStatus from "../../status/ErrorStatus";
-import CheckSvg from "../../svgs/CheckSvg";
-import CloseSvg from "../../svgs/CloseSvg";
-import NoDataSvg from "../../svgs/NoDataSvg";
-import { getTranslations } from "next-intl/server";
+import ErrorStatus from "@/app/components/status/ErrorStatus";
+import CheckSvg from "@/app/components/svgs/CheckSvg";
+import CloseSvg from "@/app/components/svgs/CloseSvg";
+import NoDataSvg from "@/app/components/svgs/NoDataSvg";
 
 export default async function UserInfoData() {
   const translate = await getTranslations("APP.PROFILE.ME");
