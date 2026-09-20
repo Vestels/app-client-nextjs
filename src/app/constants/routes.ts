@@ -1,3 +1,15 @@
+export const AUTH_ROUTES = {
+  BASE: "auth",
+  LOGIN: "auth/login",
+  LOGOUT: "auth/logout",
+} as const;
+
+export const ROUTES = {
+  HOME: "/",
+  USERS: "users",
+  PROFILE: "profile",
+} as const;
+
 export const USERS = {
   DATA: "me",
   INFO: "info",

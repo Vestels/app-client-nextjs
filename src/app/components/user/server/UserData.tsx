@@ -1,5 +1,4 @@
-import { USERS } from "../../../constants/routes";
-import { UserStatus } from "@/enums/user.enum";
+import { ROUTES, USERS } from "../../../constants/routes";
 import ErrorStatus from "../../status/ErrorStatus";
 import { apiClient } from "@/lib/api-client.lib";
 import UserInfoData from "./UserInfoData";
@@ -13,7 +12,7 @@ export default async function UserData() {
   let user: User;
 
   try {
-    user = await apiClient<User>(USERS.DATA);
+    user = await apiClient<User>(`${ROUTES.USERS}/${USERS.DATA}`);
   } catch (error) {
     console.log(error);
     return <ErrorStatus />;

@@ -1,5 +1,6 @@
 "use client";
 
+import { ROUTES } from "@/app/constants/routes";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,7 +18,7 @@ export default function NotFound() {
         height={80}
         alt=""
       />
-      <Link href="/" className="btn">
+      <Link href={ROUTES.HOME} className="btn">
         {translate("ACTIONS.ERROR.BACK_TO_HOME")}
       </Link>
     </div>

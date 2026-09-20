@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { getCurrentUser } from "@/lib/get-current-user.lib";
 import { NextIntlClientProvider } from "next-intl";
+import { AUTH_ROUTES } from "@/app/constants/routes";
 
 export const metadata: Metadata = {
   title: "Fitness App",
@@ -35,7 +36,7 @@ export default async function RootLayout({
             <div className="header__logo">
               <h1>{translate("APP_NAME")}</h1>
             </div>
-            <a href="/auth/logout" className="btn btn--logout">
+            <a href={`/${AUTH_ROUTES.LOGOUT}`} className="btn btn--logout">
               <LogoutSvg />
             </a>
           </div>

@@ -1,4 +1,4 @@
-import { USERS } from "@/app/constants/routes";
+import { ROUTES, USERS } from "@/app/constants/routes";
 import { apiClient } from "@/lib/api-client.lib";
 import { UserAuth0Info } from "@/interfaces/user.interface";
 import ErrorStatus from "../../status/ErrorStatus";
@@ -13,7 +13,7 @@ export default async function UserInfoData() {
   let userInfo: UserAuth0Info;
 
   try {
-    userInfo = await apiClient<UserAuth0Info>(USERS.INFO);
+    userInfo = await apiClient<UserAuth0Info>(`${ROUTES.USERS}/${USERS.INFO}`);
   } catch (error) {
     console.log(error);
     return <ErrorStatus />;

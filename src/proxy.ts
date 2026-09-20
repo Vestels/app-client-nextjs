@@ -2,13 +2,14 @@ import { auth0 } from "@/lib/auth0.lib";
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "@/i18n/routing";
+import { AUTH_ROUTES } from "./app/constants/routes";
 
 const handleI18nRouting = createMiddleware(routing);
 
 export async function proxy(request: NextRequest) {
   const url = new URL(request.url);
 
-  if (url.pathname.startsWith("/auth")) {
+  if (url.pathname.startsWith(`/${AUTH_ROUTES.BASE}`)) {
     return auth0.middleware(request);
   }
 
@@ -21,12 +22,14 @@ export async function proxy(request: NextRequest) {
   const session = await auth0.getSession();
 
   if (!session) {
-    return NextResponse.redirect(new URL("/auth/login", request.url));
+    return NextResponse.redirect(new URL(`/${AUTH_ROUTES.LOGIN}`, request.url));
   }
 
   return auth0.middleware(request);
 }
 
 export const config = {
-  matcher: ["/((?!api|_next|assets|fonts|logo|favicon.ico|robots.txt|sitemap.xml|manifest.webmanifest|site.webmanifest).*)"],
+  matcher: [
+    "/((?!api|_next|assets|fonts|logo|favicon.ico|robots.txt|sitemap.xml|manifest.webmanifest|site.webmanifest).*)",
+  ],
 };

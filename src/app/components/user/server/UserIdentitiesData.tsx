@@ -2,7 +2,7 @@ import { IdentityProvider } from "@/enums/user.enum";
 import { UserIdentity } from "@/interfaces/user.interface";
 import { apiClient } from "@/lib/api-client.lib";
 import ErrorStatus from "../../status/ErrorStatus";
-import { USERS } from "@/app/constants/routes";
+import { ROUTES, USERS } from "@/app/constants/routes";
 import React from "react";
 import { getTranslations } from "next-intl/server";
 
@@ -11,7 +11,7 @@ export default async function UserIdentitiesData() {
   let userIdentities: UserIdentity[];
 
   try {
-    userIdentities = await apiClient<UserIdentity[]>(USERS.IDENTITIES);
+    userIdentities = await apiClient<UserIdentity[]>(`${ROUTES.USERS}/${USERS.IDENTITIES}`);
   } catch (error) {
     console.log(error);
     return <ErrorStatus />;
