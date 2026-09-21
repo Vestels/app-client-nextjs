@@ -1,10 +1,10 @@
 import "@/styles/styles.scss";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages, getTranslations } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 import { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 import { getCurrentUser } from "@/lib/get-current-user.lib";
-import SideNavigation from "@/app/components/SideNavigation";
+import NavigationShell from "@/app/components/navigation/NavigationShell";
 
 export const metadata: Metadata = {
   title: "Fitness App",
@@ -23,26 +23,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   await getCurrentUser();
-  const translate = await getTranslations("APP");
   const messages = await getMessages();
   const locale = await getLocale();
 
   return (
     <html lang={locale} data-theme="light" data-scroll-behavior="smooth">
       <body>
-        <header className="header">
-          <div className="header__wrapper">
-            <div className="header__logo">
-              <h1>{translate("APP_NAME")}</h1>
-            </div>
-          </div>
-        </header>
-        <main className="main">
-          <SideNavigation />
-          <article className="main-container">
-            <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
-          </article>
-        </main>
+        <NextIntlClientProvider messages={messages}>
+          <NavigationShell>{children}</NavigationShell>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -18,10 +18,16 @@
   &__wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: toRem(24px);
     width: min(100%, var(--app-main-max-width));
     padding-inline: toRem(16px);
+  }
+
+  &__menu-button.button {
+    max-width: toRem(56px);
+    padding: toRem(8px);
+    width: auto;
   }
 
   &__logo {

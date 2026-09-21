@@ -1,20 +1,37 @@
 @use "@/styles/forwarder" as *;
 
 .side-navigation {
-  position: sticky;
-  top: calc(var(--app-header-height) + #{toRem(40px)});
-
-  max-height: calc(100vh - var(--app-header-height) - #{toRem(80px)});
-  padding: toRem(4px) toRem(24px) toRem(4px) toRem(4px);
-
-  border-color: var(--main-border-color);
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  top: var(--app-header-height);
+  background-color: var(--pure-white);
+  padding: toRem(32px) toRem(16px);
   border-width: 0 toRem(1px) 0 0;
+  border-color: var(--main-border-color);
   border-style: solid;
-
+  box-shadow: var(--shadow-02);
+  transform: translateX(-110%);
+  transition: var(--global-transition-time-and-function);
+  transition-property: transform;
   overflow-y: auto;
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  @include media-breakpoint-up(md) {
+    position: sticky;
+    top: calc(var(--app-header-height) + #{toRem(40px)});
+    max-height: calc(100vh - var(--app-header-height) - #{toRem(80px)});
+    padding: toRem(4px) toRem(24px) toRem(4px) toRem(4px);
+    transform: translate(0);
+    box-shadow: none;
+  }
 
   &__list {
     display: grid;
+    place-items: start;
     gap: toRem(8px);
   }
 }

@@ -33,7 +33,6 @@ summary,
 
 html {
   scrollbar-width: thin;
-  // scrollbar-color: var(--brand-color-02) transparent;
 }
 
 // body {
@@ -55,26 +54,12 @@ body.pvpartners-cookie-consent-is-open {
   height: toRem(5px);
 }
 
-// ::-webkit-scrollbar-track {
-//   background-color: var(--white-01);
-// }
-
-// ::-webkit-scrollbar-thumb {
-//   border-radius: toRem(999px);
-//   background-color: var(--brand-color-02);
-// }
-
-// ::-webkit-scrollbar-thumb:hover {
-//   background-color: var(--brand-color-01);
-// }
-
 html,
 body {
   min-height: 100vh;
   min-height: 100dvh;
   max-width: 100vw;
   max-width: 100dvw;
-  // overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -111,15 +96,12 @@ body {
   // color: var(--text-color-primary);
 }
 
-// html:has(#hamburger-toggle:checked),
-// body:has(#hamburger-toggle:checked) {
-//   overflow: hidden;
-
-//   @include media-breakpoint-up(lg) {
-//     overflow-x: hidden;
-//     overflow-y: visible;
-//   }
-// }
+html:has(.side-navigation--open),
+body:has(.side-navigation--open) {
+  @include media-breakpoint-down(md) {
+    overflow: hidden;
+  }
+}
 
 h1,
 h2,
@@ -127,7 +109,6 @@ h3,
 h4,
 h5,
 h6 {
-  // font-family: "Tecna", Arial, sans-serif;
   line-height: 160%;
   font-weight: 300;
   letter-spacing: initial;
@@ -169,7 +150,6 @@ svg {
   user-select: none;
   pointer-events: none;
 }
-
 
 article {
   width: 100%;

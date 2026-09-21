@@ -1,13 +1,21 @@
+"use client";
+
 import { AUTH_ROUTES, ROUTES } from "@/app/constants/routes";
 import Button from "@/app/components/Button";
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
-export default async function SideNavigation() {
-  const translate = await getTranslations("APP");
+type SideNaviogationProps = {
+  isOpen: boolean;
+};
+
+export default function SideNavigation({ isOpen }: SideNaviogationProps) {
+  const translate = useTranslations("APP");
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   return (
     <>
-      <aside className="side-navigation">
+      <aside className={`side-navigation ${isMobile && isOpen ? "side-navigation--open" : ""}`}>
         <nav>
           <ul className="side-navigation__list">
             <li className="side-navigation__list-item">
