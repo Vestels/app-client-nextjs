@@ -7,6 +7,28 @@
   padding: calc(toRem(32px) + var(--app-header-height)) toRem(16px);
   width: min(100%, var(--app-main-max-width));
 
+  &:has(.side-navigation--open) {
+    .main-container {
+      margin-left: 80%;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    &:has(.side-navigation--open) {
+      .main-container {
+        margin-left: 55%;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    &:has(.side-navigation--open) {
+      .main-container {
+        margin-left: 0;
+      }
+    }
+  }
+
   @include media-breakpoint-up(md) {
     grid-template-columns: 0.4fr 1fr;
   }
@@ -18,7 +40,9 @@
   &-container {
     position: relative;
     display: grid;
+    align-items: start;
     width: min(100%, var(--app-content-max-width));
+    min-height: toRem(300px);
     border-radius: toRem(8px);
     padding: toRem(16px);
     box-shadow: var(--shadow-02);
@@ -26,6 +50,8 @@
     border-color: var(--main-border-color);
     border-width: toRem(1px);
     border-style: solid;
+    transition: var(--global-transition-time-and-function-extended);
+    transition-property: margin;
 
     @include media-breakpoint-up(md) {
       padding-inline: toRem(32px);
@@ -67,7 +93,7 @@
         gap: toRem(16px);
         padding: toRem(24px);
         background-color: var(--pure-white);
-        box-shadow: var(--shadow-02);
+        box-shadow: var(--shadow-03);
         border-radius: toRem(8px) toRem(8px) 0 0;
         border-color: var(--color-11);
         border-width: toRem(1px);
@@ -84,7 +110,7 @@
 
         &__actions {
           display: flex;
-          flex-wrap: wrap-reverse;
+          flex-wrap: wrap;
           align-items: center;
           gap: toRem(8px);
         }

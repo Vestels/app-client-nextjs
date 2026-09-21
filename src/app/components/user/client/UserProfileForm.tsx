@@ -2,11 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { UserProfile } from "@/interfaces/user.interface";
-import { handleUpdateField } from "@/lib/handle-update-field.lib";
 import { Gender } from "@/enums/user.enum";
 import { useUnsavedChanges } from "@/contexts/UnsavedChangesContext";
-import { getChangedFields } from "@/lib/get-changed-fields.lib";
 import { useTranslations } from "next-intl";
+import { getChangedFields, handleUpdateField } from "@/utils/form.util";
 
 export default function UserProfileForm({ initialPreferences }: { initialPreferences: UserProfile }) {
   const translate = useTranslations("APP");

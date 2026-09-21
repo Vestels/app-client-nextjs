@@ -27,14 +27,14 @@
   outline-style: solid;
 
   transition: var(--global-transition-time-and-function);
-  transition-property: color, background-color;
+  transition-property: color, background-color, margin, padding, border-radius;
 
   box-shadow: none;
   user-select: none;
   hyphens: manual;
   cursor: pointer;
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(xsm) {
     width: auto;
   }
 
@@ -89,6 +89,13 @@
       &:active {
         background-color: var(--button-tertiary-active);
       }
+    }
+
+    &.active {
+      background-color: var(--button-tertiary-hover);
+      margin-right: toRem(-24px);
+      padding-right: toRem(56px);
+      border-radius: toRem(32px) 0 0 toRem(32px);
     }
   }
 }

@@ -2,10 +2,10 @@
   "APP": {
     "APP_NAME": "App Logo",
     "MAIN_PAGE": {
-      "TITLE": "Főoldal"
+      "TITLE": "Áttekintő"
     },
     "ROUTES": {
-      "HOME": "Főoldal",
+      "HOME": "Áttekintés",
       "PROFILE": "Profil"
     },
     "ACTIONS": {

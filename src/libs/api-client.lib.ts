@@ -1,4 +1,4 @@
-import { auth0 } from "@/lib/auth0.lib";
+import { auth0 } from "@/libs/auth0.lib";
 
 export async function apiClient<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const { token } = await auth0.getAccessToken();

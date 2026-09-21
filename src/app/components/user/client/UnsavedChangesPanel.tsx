@@ -17,11 +17,10 @@ export default function UnsavedChangesPanel() {
       <p className="unsaved-changes-panel__status-label">{translate("PROFILE.UNSAVED_CHANGES_PANEL.LABEL")}</p>
 
       <div className="unsaved-changes-panel__actions">
+        <Button onClick={saveChanges}>{translate("ACTIONS.PROFILE.SAVE")}</Button>
         <Button variant={"secondary"} onClick={discardChanges}>
           {translate("ACTIONS.PROFILE.CANCEL")}
         </Button>
-
-        <Button onClick={saveChanges}>{translate("ACTIONS.PROFILE.SAVE")}</Button>
       </div>
     </>
   );

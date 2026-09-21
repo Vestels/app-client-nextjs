@@ -13,7 +13,7 @@
   border-color: var(--main-border-color);
   border-width: 0 0 toRem(1px) 0;
   border-style: solid;
-  z-index: 2;
+  z-index: 3;
 
   &__wrapper {
     display: flex;
@@ -24,10 +24,42 @@
     padding-inline: toRem(16px);
   }
 
-  &__menu-button.button {
-    max-width: toRem(56px);
-    padding: toRem(8px);
-    width: auto;
+  &__menu-button {
+    &.button {
+      width: toRem(48px);
+      height: toRem(48px);
+      padding: toRem(8px);
+    }
+
+    .menu-wrapper {
+      display: grid;
+      gap: toRem(6px);
+
+      .line {
+        height: toRem(3px);
+        width: toRem(26px);
+        border-radius: toRem(2px);
+        background-color: var(--pure-white);
+        transition: var(--global-transition-time-and-function);
+        transition-property: transform;
+      }
+
+      &--open {
+        .line {
+          &:nth-child(1) {
+            transform: translateX(-2px);
+          }
+
+          &:nth-child(2) {
+            transform: translateX(4px);
+          }
+
+          &:nth-child(3) {
+            transform: translateX(-2px);
+          }
+        }
+      }
+    }
   }
 
   &__logo {

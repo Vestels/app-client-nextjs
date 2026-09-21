@@ -1,6 +1,6 @@
 import { UserIdentity } from "@/interfaces/user.interface";
-import { apiClient } from "@/lib/api-client.lib";
-import { ROUTES, USERS } from "@/app/constants/routes";
+import { apiClient } from "@/libs/api-client.lib";
+import { API_ROUTES, USERS } from "@/app/constants/routes";
 import { getTranslations } from "next-intl/server";
 import ErrorStatus from "@/app/components/status/ErrorStatus";
 import React from "react";
@@ -10,7 +10,7 @@ export default async function UserIdentitiesData() {
   let userIdentities: UserIdentity[];
 
   try {
-    userIdentities = await apiClient<UserIdentity[]>(`${ROUTES.USERS}/${USERS.IDENTITIES}`);
+    userIdentities = await apiClient<UserIdentity[]>(`${API_ROUTES.USERS}/${USERS.IDENTITIES}`);
   } catch (error) {
     console.log(error);
     return <ErrorStatus />;

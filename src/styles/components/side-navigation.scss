@@ -2,22 +2,26 @@
 
 .side-navigation {
   position: fixed;
-  inset: 0;
-  z-index: 1;
-  top: var(--app-header-height);
+  inset: var(--app-header-height) 30% 0 0;
+  z-index: 2;
+  display: grid;
   background-color: var(--pure-white);
   padding: toRem(32px) toRem(16px);
   border-width: 0 toRem(1px) 0 0;
   border-color: var(--main-border-color);
   border-style: solid;
-  box-shadow: var(--shadow-02);
-  transform: translateX(-110%);
+  box-shadow: var(--shadow-03);
+  transform: translateX(-101%);
   transition: var(--global-transition-time-and-function);
   transition-property: transform;
   overflow-y: auto;
 
   &--open {
     transform: translateX(0);
+  }
+
+  @include media-breakpoint-up(sm) {
+    inset: var(--app-header-height) 50% 0 0;
   }
 
   @include media-breakpoint-up(md) {
@@ -31,7 +35,13 @@
 
   &__list {
     display: grid;
-    place-items: start;
+    place-items: start end;
     gap: toRem(8px);
+
+    &-item {
+      .button {
+        width: auto;
+      }
+    }
   }
 }

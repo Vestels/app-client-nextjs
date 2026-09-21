@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { auth0 } from "@/lib/auth0.lib";
+import { auth0 } from "@/libs/auth0.lib";
 import { routing } from "@/i18n/routing";
 import { AUTH_ROUTES } from "@/app/constants/routes";
 import createMiddleware from "next-intl/middleware";

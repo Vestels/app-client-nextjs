@@ -1,3 +1,5 @@
+import LocalizedLink from "./LocalizedLink";
+
 type BaseProps = {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "subtle" | "tertiary";
@@ -23,9 +25,9 @@ export default function Button({ children, variant = "primary", disabled = false
 
   if ("href" in props && props.href !== undefined) {
     return (
-      <a href={props.href} onClick={props.onClick} className={classes}>
+      <LocalizedLink href={props.href} onClick={props.onClick} className={classes}>
         {children}
-      </a>
+      </LocalizedLink>
     );
   }
 

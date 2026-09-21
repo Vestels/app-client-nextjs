@@ -2,6 +2,7 @@
 
 :root {
   --global-transition-time-and-function: 0.25s ease;
+  --global-transition-time-and-function-extended: 0.5s ease;
 
   --app-header-height: #{toRem(72px)};
   --app-main-max-width: #{toRem(1440px)};

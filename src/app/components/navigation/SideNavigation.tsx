@@ -1,17 +1,18 @@
 "use client";
 
-import { AUTH_ROUTES, ROUTES } from "@/app/constants/routes";
-import Button from "@/app/components/Button";
+import { APP_ROUTES, AUTH_ROUTES } from "@/app/constants/routes";
 import { useTranslations } from "next-intl";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { usePathname } from "@/i18n/navigation";
+import Button from "@/app/components/Button";
 
 type SideNaviogationProps = {
   isOpen: boolean;
+  isMobile: boolean;
 };
 
-export default function SideNavigation({ isOpen }: SideNaviogationProps) {
+export default function SideNavigation({ isOpen, isMobile }: SideNaviogationProps) {
   const translate = useTranslations("APP");
-  const isMobile = useMediaQuery("(max-width: 767px)");
+  const pathname = usePathname();
 
   return (
     <>
@@ -19,18 +20,24 @@ export default function SideNavigation({ isOpen }: SideNaviogationProps) {
         <nav>
           <ul className="side-navigation__list">
             <li className="side-navigation__list-item">
-              <Button variant={"tertiary"} href={`${ROUTES.HOME}`}>
+              <Button
+                className={pathname === APP_ROUTES.HOME ? "active" : ""}
+                variant={"tertiary"}
+                href={`${APP_ROUTES.HOME}`}>
                 {translate("ROUTES.HOME")}
               </Button>
             </li>
             <li className="side-navigation__list-item">
-              <Button variant={"tertiary"} href={`/${ROUTES.PROFILE}`}>
+              <Button
+                className={pathname === `/${APP_ROUTES.PROFILE}` ? "active" : ""}
+                variant={"tertiary"}
+                href={`/${APP_ROUTES.PROFILE}`}>
                 {translate("ROUTES.PROFILE")}
               </Button>
             </li>
           </ul>
           <hr className="divider" />
-          <Button href={`/${AUTH_ROUTES.LOGOUT}`}>{translate("ACTIONS.LOGOUT")}</Button>
+          <a href={`/${AUTH_ROUTES.LOGOUT}`} className="button button--primary">{translate("ACTIONS.LOGOUT")}</a>
         </nav>
       </aside>
     </>

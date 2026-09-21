@@ -1,10 +1,10 @@
 import { getTranslations } from "next-intl/server";
-import { ROUTES, USERS } from "@/app/constants/routes";
-import { apiClient } from "@/lib/api-client.lib";
+import { API_ROUTES, USERS } from "@/app/constants/routes";
+import { apiClient } from "@/libs/api-client.lib";
 import { User } from "@/interfaces/user.interface";
-import { formatDate } from "@/lib/format-date.lib";
+import { formatDate } from "@/utils/format-date.util";
 import ErrorStatus from "@/app/components/status/ErrorStatus";
-import UserInfoData from "@/app/components/user/server/UserInfoData";
+// import UserInfoData from "@/app/components/user/server/UserInfoData";
 import Button from "@/app/components/Button";
 
 export default async function UserData() {
@@ -13,7 +13,7 @@ export default async function UserData() {
   let user: User;
 
   try {
-    user = await apiClient<User>(`${ROUTES.USERS}/${USERS.DATA}`);
+    user = await apiClient<User>(`${API_ROUTES.USERS}/${USERS.DATA}`);
   } catch (error) {
     console.log(error);
     return <ErrorStatus />;
@@ -22,7 +22,7 @@ export default async function UserData() {
   return (
     <>
       <div className="user-informations">
-        <UserInfoData />
+        {/* <UserInfoData /> */}
 
         {user && (
           <>

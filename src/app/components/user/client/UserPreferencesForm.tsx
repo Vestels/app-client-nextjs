@@ -2,11 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { UserPreference } from "@/interfaces/user.interface";
-import { handleUpdateField } from "@/lib/handle-update-field.lib";
 import { Language, Theme, UnitSystem } from "@/enums/user.enum";
 import { useUnsavedChanges } from "@/contexts/UnsavedChangesContext";
-import { getChangedFields } from "@/lib/get-changed-fields.lib";
 import { useTranslations } from "next-intl";
+import { getChangedFields, handleUpdateField } from "@/utils/form.util";
 
 export default function UserPreferencesForm({ initialPreferences }: { initialPreferences: UserPreference }) {
   const translate = useTranslations("APP");
@@ -55,7 +54,6 @@ export default function UserPreferencesForm({ initialPreferences }: { initialPre
         </label>
 
         <select
-          disabled
           id="language"
           value={formData.language}
           onChange={(event) => handleUpdateField(setFormData, "language", event.target.value as Language)}>
@@ -90,7 +88,6 @@ export default function UserPreferencesForm({ initialPreferences }: { initialPre
         </label>
 
         <select
-          disabled
           id="theme"
           value={formData.theme}
           onChange={(event) => handleUpdateField(setFormData, "theme", event.target.value as Theme)}>

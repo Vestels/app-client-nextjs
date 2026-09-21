@@ -33,21 +33,23 @@ summary,
 
 html {
   scrollbar-width: thin;
+
+  scrollbar-gutter: stable;
 }
 
-// body {
-//   scrollbar-gutter: stable;
+body {
+  scrollbar-gutter: stable;
+}
+
+// html.cookie-consent-is-open,
+// body.cookie-consent-is-open {
+//   overflow: hidden;
+//   overscroll-behavior: none;
 // }
 
-html.pvpartners-cookie-consent-is-open,
-body.pvpartners-cookie-consent-is-open {
-  overflow: hidden;
-  overscroll-behavior: none;
-}
-
-body.pvpartners-cookie-consent-is-open {
-  touch-action: none;
-}
+// body.cookie-consent-is-open {
+//   touch-action: none;
+// }
 
 ::-webkit-scrollbar {
   width: toRem(5px);
@@ -56,11 +58,13 @@ body.pvpartners-cookie-consent-is-open {
 
 html,
 body {
-  min-height: 100vh;
   min-height: 100dvh;
-  max-width: 100vw;
   max-width: 100dvw;
   scroll-behavior: smooth;
+
+  @include media-breakpoint-down(md) {
+    overflow-x: hidden;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -96,12 +100,12 @@ body {
   // color: var(--text-color-primary);
 }
 
-html:has(.side-navigation--open),
-body:has(.side-navigation--open) {
-  @include media-breakpoint-down(md) {
-    overflow: hidden;
-  }
-}
+// html:has(.side-navigation--open),
+// body:has(.side-navigation--open) {
+//   @include media-breakpoint-down(md) {
+//     overflow: hidden;
+//   }
+// }
 
 h1,
 h2,
