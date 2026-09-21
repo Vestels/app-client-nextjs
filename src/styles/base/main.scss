@@ -3,12 +3,16 @@
 .main {
   display: grid;
   align-items: start;
-  gap: toRem(36px);
+  gap: toRem(24px);
   padding: calc(toRem(32px) + var(--app-header-height)) toRem(16px);
   width: min(100%, var(--app-main-max-width));
 
   @include media-breakpoint-up(md) {
-    grid-template-columns: 0.3fr 1fr 0.3fr;
+    grid-template-columns: 0.4fr 1fr;
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: 0.3fr 1fr;
   }
 
   &-container {
@@ -19,7 +23,7 @@
     padding: toRem(16px);
     box-shadow: var(--shadow-02);
     background-color: var(--pure-white);
-    border-color: var(--color-11);
+    border-color: var(--main-border-color);
     border-width: toRem(1px);
     border-style: solid;
 

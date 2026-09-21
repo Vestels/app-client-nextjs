@@ -8,7 +8,7 @@ export default async function SideNavigation() {
   return (
     <>
       <aside className="side-navigation">
-        <nav className="side-navigation__nav">
+        <nav>
           <ul className="side-navigation__list">
             <li className="side-navigation__list-item">
               <Button variant={"tertiary"} href={`${ROUTES.HOME}`}>

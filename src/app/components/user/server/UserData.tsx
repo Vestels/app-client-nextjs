@@ -68,18 +68,10 @@ export default async function UserData() {
                   <p className="value">{formatDate(user.scheduledDeletionAt!)}</p>
                 </div>
 
-                <div className="user-informations__data-row">
-                  <Button className="value" variant={"secondary"}>
-                    {translate("ACTIONS.PROFILE.RESTORE")}
-                  </Button>
-                </div>
+                <Button variant={"secondary"}>{translate("ACTIONS.PROFILE.RESTORE")}</Button>
               </>
             ) : (
-              <div className="user-informations__data-row">
-                <Button className="value" variant={"secondary"}>
-                  {translate("ACTIONS.PROFILE.DELETE")}
-                </Button>
-              </div>
+              <Button variant={"secondary"}>{translate("ACTIONS.PROFILE.DELETE")}</Button>
             )}
           </>
         )}

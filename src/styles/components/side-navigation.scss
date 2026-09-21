@@ -4,6 +4,17 @@
   position: sticky;
   top: calc(var(--app-header-height) + #{toRem(40px)});
 
-  &__nav {
+  max-height: calc(100vh - var(--app-header-height) - #{toRem(80px)});
+  padding: toRem(4px) toRem(24px) toRem(4px) toRem(4px);
+
+  border-color: var(--main-border-color);
+  border-width: 0 toRem(1px) 0 0;
+  border-style: solid;
+
+  overflow-y: auto;
+
+  &__list {
+    display: grid;
+    gap: toRem(8px);
   }
 }
