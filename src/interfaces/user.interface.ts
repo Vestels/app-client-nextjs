@@ -36,7 +36,6 @@ export interface UserPreference {
   language: string;
   unitSystem: UnitSystem;
   theme: Theme;
-  timezone: string;
   emailNotifications: boolean;
   pushNotifications: boolean;
 }
