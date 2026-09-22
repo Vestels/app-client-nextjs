@@ -25,7 +25,7 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${AUTH_ROUTES.LOGIN}`, request.url));
   }
 
-  return auth0.middleware(request);
+  return NextResponse.next();
 }
 
 export const config = {
