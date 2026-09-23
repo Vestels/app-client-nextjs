@@ -1,14 +1,13 @@
 import { getTranslations } from "next-intl/server";
-import { API_ROUTES } from "@/app/constants/routes";
-import { apiClient } from "@/libs/api-client.lib";
 import { User } from "@/interfaces/user.interface";
 import { formatDate } from "@/utils/format-date.util";
 // import UserInfoData from "@/app/components/user/server/UserInfoData";
-import Button from "@/app/components/Button";
+import UserActionButton from "@/app/components/user/client/UserActionButton";
+import { getCurrentUserAction } from "@/actions/user.actions";
 
 export default async function UserData() {
   const translate = await getTranslations("APP");
-  const user: User = await apiClient<User>(`${API_ROUTES.USERS.USERS}/${API_ROUTES.USERS.DATA}`);
+  const user: User = await getCurrentUserAction();
 
   return (
     <>
@@ -59,10 +58,10 @@ export default async function UserData() {
                   <p className="value">{formatDate(user.scheduledDeletionAt!, true)}</p>
                 </div>
 
-                <Button variant={"secondary"}>{translate("ACTIONS.PROFILE.RESTORE")}</Button>
+                <UserActionButton onClick="cleardelete">{translate("ACTIONS.PROFILE.RESTORE")}</UserActionButton>
               </>
             ) : (
-              <Button variant={"secondary"}>{translate("ACTIONS.PROFILE.DELETE")}</Button>
+              <UserActionButton onClick="delete">{translate("ACTIONS.PROFILE.DELETE")}</UserActionButton>
             )}
           </>
         )}

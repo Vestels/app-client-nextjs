@@ -11,8 +11,8 @@
     "ACTIONS": {
       "LOGOUT": "Kijelentkezés",
       "PROFILE": {
-        "RESTORE": "Fiók visszaállítása",
-        "DELETE": "Törlés",
+        "RESTORE": "Törlés visszavonása",
+        "DELETE": "Fiók törlése",
         "SAVE": "Mentés",
         "CANCEL": "Elvetés"
       },

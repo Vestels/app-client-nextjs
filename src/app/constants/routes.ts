@@ -17,5 +17,6 @@ export const API_ROUTES = {
     PROFILE: "profile",
     PREFERENCES: "preferences",
     IDENTITIES: "identities",
+    CANCEL_DELETE: "deletion/cancel"
   },
 } as const;

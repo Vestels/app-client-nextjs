@@ -35,5 +35,11 @@ export async function apiClient<T>(endpoint: string, options?: RequestInit): Pro
     throw new ApiError(body || `API request failed with status ${response.status}`, response.status);
   }
 
-  return response.json();
+  const body = await response.text();
+
+  if (!body) {
+    return undefined as T;
+  }
+
+  return JSON.parse(body) as T;
 }

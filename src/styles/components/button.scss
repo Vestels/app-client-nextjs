@@ -98,4 +98,10 @@
       border-radius: toRem(32px) 0 0 toRem(32px);
     }
   }
+
+  &--user-action {
+    .spinner {
+      max-width: toRem(18px);
+    }
+  }
 }

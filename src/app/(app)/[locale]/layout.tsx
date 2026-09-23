@@ -3,9 +3,10 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Metadata } from "next";
 import { routing } from "@/i18n/routing";
-import { getCurrentUser } from "@/libs/get-current-user.lib";
+import { getCurrentUserAction } from "@/actions/user.actions";
 import NavigationShell from "@/app/components/navigation/NavigationShell";
 
+// TODO
 export const metadata: Metadata = {
   title: "Fitness App",
   description: "Fitness application",
@@ -22,7 +23,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  await getCurrentUser();
+  await getCurrentUserAction();
   const messages = await getMessages();
   const locale = await getLocale();
 
