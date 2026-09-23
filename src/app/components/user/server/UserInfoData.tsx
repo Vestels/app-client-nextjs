@@ -1,5 +1,5 @@
 // import { getTranslations } from "next-intl/server";
-// import { API_ROUTES, USERS } from "@/app/constants/routes";
+// import { API_ROUTES } from "@/app/constants/routes";
 // import { apiClient } from "@/libs/api-client.lib";
 // import { UserAuth0Info } from "@/interfaces/user.interface";
 // import ErrorStatus from "@/app/components/status/ErrorStatus";
@@ -9,15 +9,7 @@
 
 // export default async function UserInfoData() {
 //   const translate = await getTranslations("APP.PROFILE.ME");
-
-//   let userInfo: UserAuth0Info;
-
-//   try {
-//     userInfo = await apiClient<UserAuth0Info>(`${API_ROUTES.USERS}/${USERS.INFO}`);
-//   } catch (error) {
-//     console.log(error);
-//     return <ErrorStatus />;
-//   }
+//   const userInfo: UserAuth0Info = await apiClient<UserAuth0Info>(`${API_ROUTES.USERS.USERS}/${API_ROUTES.USERS.INFO}`);
 
 //   return (
 //     <>

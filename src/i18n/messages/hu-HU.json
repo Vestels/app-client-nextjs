@@ -11,7 +11,7 @@
     "ACTIONS": {
       "LOGOUT": "Kijelentkezés",
       "PROFILE": {
-        "RESTORE": "Fiók helyreállítása",
+        "RESTORE": "Fiók visszaállítása",
         "DELETE": "Törlés",
         "SAVE": "Mentés",
         "CANCEL": "Elvetés"
@@ -70,7 +70,8 @@
       "USER_STATUS": {
         "ACTIVE": "Aktív",
         "SUSPENDED": "Felfüggesztett",
-        "PENDING_DELETION": "Törlésre vár"
+        "PENDING_DELETION": "Törlésre vár",
+        "DELETING": "Törlés folyamatban"
       },
       "GENDER": {
         "MALE": "Férfi",

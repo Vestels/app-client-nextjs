@@ -1,23 +1,14 @@
 import { getTranslations } from "next-intl/server";
-import { API_ROUTES, USERS } from "@/app/constants/routes";
+import { API_ROUTES } from "@/app/constants/routes";
 import { apiClient } from "@/libs/api-client.lib";
 import { User } from "@/interfaces/user.interface";
 import { formatDate } from "@/utils/format-date.util";
-import ErrorStatus from "@/app/components/status/ErrorStatus";
 // import UserInfoData from "@/app/components/user/server/UserInfoData";
 import Button from "@/app/components/Button";
 
 export default async function UserData() {
   const translate = await getTranslations("APP");
-
-  let user: User;
-
-  try {
-    user = await apiClient<User>(`${API_ROUTES.USERS}/${USERS.DATA}`);
-  } catch (error) {
-    console.log(error);
-    return <ErrorStatus />;
-  }
+  const user: User = await apiClient<User>(`${API_ROUTES.USERS.USERS}/${API_ROUTES.USERS.DATA}`);
 
   return (
     <>
@@ -60,12 +51,12 @@ export default async function UserData() {
               <>
                 <div className="user-informations__data-row">
                   <strong className="property">{translate("PROFILE.ME.DELETION_REQUESTED_AT")}</strong>
-                  <p className="value">{formatDate(user.deletionRequestAt!)}</p>
+                  <p className="value">{formatDate(user.deletionRequestAt!, true)}</p>
                 </div>
 
                 <div className="user-informations__data-row">
                   <strong className="property">{translate("PROFILE.ME.DELETION_SCHEDULED_AT")}</strong>
-                  <p className="value">{formatDate(user.scheduledDeletionAt!)}</p>
+                  <p className="value">{formatDate(user.scheduledDeletionAt!, true)}</p>
                 </div>
 
                 <Button variant={"secondary"}>{translate("ACTIONS.PROFILE.RESTORE")}</Button>

@@ -2,6 +2,7 @@ export enum UserStatus {
   ACTIVE = "ACTIVE",
   SUSPENDED = "SUSPENDED",
   PENDING_DELETION = "PENDING_DELETION",
+  DELETING = "DELETING"
 }
 
 export enum Gender {
