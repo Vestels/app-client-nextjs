@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "@/app/components/Header";
 import SideNavigation from "@/app/components/navigation/SideNavigation";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { usePathname } from "@/i18n/navigation";
 
 export default function NavigationShell({ children }: Readonly<{ children: React.ReactNode }>) {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
