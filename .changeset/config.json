@@ -10,12 +10,11 @@
       "disableThanks": true
     }
   ],
-  "commit": true,
+  "commit": false,
   "ignore": [],
   "fixed": [],
   "linked": [],
   "updateInternalDependencies": "patch",
-  "packageManager": "pnpm@12.6.0",
   "privatePackages": {
     "version": true,
     "tag": true

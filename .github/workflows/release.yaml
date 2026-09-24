@@ -1,4 +1,4 @@
-name: Changesets / Changelog
+name: Release
 
 on:
   push:
@@ -52,13 +52,30 @@ jobs:
       - name: Update version and changelog
         if: steps.changesets.outputs.has_changesets == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           HUSKY: "0"
         run: pnpm changeset version
 
-      - name: Push version commit and tag
+      - name: Commit version changes
         if: steps.changesets.outputs.has_changesets == 'true'
-        run: git push origin develop --follow-tags
+        env:
+          HUSKY: "0"
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          git add .
+          git commit -m "chore(release): [ v${VERSION} ]"
+
+      - name: Create tag
+        if: steps.changesets.outputs.has_changesets == 'true'
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          git tag "v${VERSION}"
+
+      - name: Push commit and tag
+        if: steps.changesets.outputs.has_changesets == 'true'
+        run: |
+          git push origin develop
+          git push origin --tags
 
       - name: Create GitHub Release
         if: steps.changesets.outputs.has_changesets == 'true'
